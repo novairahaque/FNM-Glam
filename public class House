@@ -1,1 +1,41 @@
+abstract class House {
+    protected static final double PRICE_PER_MARLA = 2000000.0; 
+    protected int houseNo;
+    protected double areaMarla;
+    protected boolean occupied;
+    protected Resident resident;  
 
+ public House(int houseNo, double areaMarla) {
+        this.houseNo = houseNo;
+        this.areaMarla = areaMarla;
+        this.occupied = false;
+        this.resident = null;
+    }
+ public abstract double calculatePrice();
+ public abstract String getType();
+
+public boolean allot(Resident r) {
+        if (occupied) return false;
+        resident = r;
+        occupied = true;
+        return true;
+    }
+ public boolean vacate() {
+        if (!occupied) return false;
+        resident = null;
+        occupied = false;
+        return true;
+    }
+public boolean isOccupied() {
+                 return occupied; }
+public int getHouseNo() { 
+                  return houseNo; }
+public double getArea() { 
+                  return areaMarla; }
+ 
+public void display() {
+        System.out.printf("%-6d%-14s%-8.0f%-14.0f%s%n",
+                houseNo, getType(), areaMarla, calculatePrice(),
+                occupied ? "Occupied by " + resident.display() : "Vacant");
+    }
+}
