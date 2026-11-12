@@ -1,0 +1,55 @@
+class Block {
+    private String blockName;
+    private ArrayList<House> houses;
+ 
+    public Block(String blockName) {
+        this.blockName = blockName;
+        this.houses = new ArrayList<>();
+    }
+ 
+    public String getName()
+{ 
+return blockName;
+}
+ 
+    public void addHouse(House h) {
+houses.add(h); }
+ 
+    public House findHouse(int houseNo) {
+        for (House h : houses)
+            if (h.getHouseNo() == houseNo) return h;
+        return null;
+    }
+ 
+    public boolean allotHouse(int houseNo, Resident r) {
+        House h = findHouse(houseNo);
+        return h != null && h.allot(r);
+    }
+ 
+    public boolean vacateHouse(int houseNo) {
+        House h = findHouse(houseNo);
+        return h != null && h.vacate();
+    }
+ 
+    public int totalHouses() { 
+return houses.size(); 
+}
+ 
+    public int countVacant() {
+        int c = 0;
+        for (House h : houses)
+            if (!h.isOccupied()) c++;
+        return c;
+    }
+ 
+    public int countOccupied() { 
+return totalHouses() - countVacant(); 
+}
+ 
+    public void displayHouses() {
+        System.out.println("\n--- Block " + blockName + " ---");
+        System.out.printf("%-6s%-14s%-8s%-14s%s%n", "No", "Type", "Marla", "Price(PKR)", "Status");
+        for (House h : houses) h.display();
+    }
+}
+ 
