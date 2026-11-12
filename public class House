@@ -1,4 +1,4 @@
-abstract class House {
+public abstract class House {
     protected static final double PRICE_PER_MARLA = 2000000.0; 
     protected int houseNo;
     protected double areaMarla;
