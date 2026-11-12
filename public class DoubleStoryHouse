@@ -1,0 +1,22 @@
+class DoubleStoryHouse extends House {
+    private double extraFloorFactor;
+ 
+    public DoubleStoryHouse(int houseNo, double area, double extraFloorFactor) {
+        super(houseNo, area);
+        this.extraFloorFactor = extraFloorFactor;
+    }
+ 
+    public DoubleStoryHouse(int houseNo, double area) {
+        this(houseNo, area, 1.6);
+    }
+ 
+    @Override
+    public double calculatePrice() {
+        return areaMarla * PRICE_PER_MARLA * extraFloorFactor;
+    }
+ 
+    @Override
+    public String getType() { 
+    return "Double Story";
+    }
+}
