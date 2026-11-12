@@ -1,0 +1,72 @@
+class HousingScheme 
+{
+    private String schemeName;
+    private String location;
+    private ArrayList<Block> blocks;
+
+    public HousingScheme(String schemeName, String location) 
+    {
+        this.schemeName = schemeName;
+        this.location = location;
+        this.blocks = new ArrayList<>();
+ 
+        String[] names = {"A", "B", "C", "D"};
+        for (String n : names) 
+        {
+            Block blk = new Block(n);
+            for (int i = 1; i <= 5; i++) 
+            {
+                if (i % 2 == 1) blk.addHouse(new SingleStoryHouse(i, 5));
+                else            blk.addHouse(new DoubleStoryHouse(i, 10));
+            }
+            blocks.add(blk);
+        }
+    }
+
+
+    public Block findBlock(String name) 
+    {
+        for (Block b : blocks)
+            if (b.getName().equals(name)) return b;
+        return null;
+    }
+
+
+    public boolean allotHouse(String block, int houseNo, Resident r) 
+    {
+        Block b = findBlock(block);
+        return b != null && b.allotHouse(houseNo, r);
+    }
+
+
+    public boolean vacateHouse(String block, int houseNo) 
+    {
+        Block b = findBlock(block);
+        return b != null && b.vacateHouse(houseNo);
+    }
+
+
+    public void displayScheme() 
+    {
+        System.out.println("\n==== " + schemeName + " (" + location + ") ====");
+        for (Block b : blocks) b.displayHouses();
+    }
+
+
+    public void displaySummary() 
+    {
+        System.out.println("\n==== Summary: " + schemeName + " ====");
+        int total = 0, occ = 0;
+        for (Block b : blocks) 
+        {
+            System.out.println("Block " + b.getName() + ": "
+                    + b.countOccupied() + " occupied, "
+                    + b.countVacant() + " vacant");
+            total += b.totalHouses();
+            occ += b.countOccupied();
+        }
+
+        System.out.println("Total houses: " + total + ", occupied: " + occ
+                + ", vacant: " + (total - occ));
+    }
+}
