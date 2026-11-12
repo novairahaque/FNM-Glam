@@ -1,0 +1,15 @@
+public class SingleStoryHouse extends House {
+    public SingleStoryHouse(int houseNo, double area) {
+        super(houseNo, area);
+    }
+ 
+    @Override
+    public double calculatePrice() {
+    return areaMarla * PRICE_PER_MARLA;
+    }
+ 
+    @Override
+    public String getType() {
+    return "Single Story";
+    }
+}
