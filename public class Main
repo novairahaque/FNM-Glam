@@ -1,0 +1,20 @@
+public class Main {
+    public static void main(String[] args) {
+        HousingScheme scheme = new HousingScheme("Green Valley Housing Scheme", "Lahore");
+ 
+        scheme.allotHouse("A", 1, new Resident("Ali Khan",   "35202-1234567-1", "0300-1111111"));
+        scheme.allotHouse("A", 2, new Resident("Sara Ahmed", "35202-7654321-2", "0301-2222222"));
+        scheme.allotHouse("C", 3, new Resident("Usman Raza", "35201-1111111-3", "0302-3333333"));
+ 
+        // trying to allot an already occupied house
+        if (!scheme.allotHouse("A", 1, new Resident("Hina", "35202-0000000-0", "0303-4444444")))
+            System.out.println("House A-1 is already occupied!");
+ 
+        scheme.displayScheme();
+        scheme.displaySummary();
+ 
+        scheme.vacateHouse("A", 2);
+        System.out.println("\nAfter vacating A-2:");
+        scheme.displaySummary();
+    }
+}
