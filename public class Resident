@@ -1,0 +1,25 @@
+public class Resident {
+    private String name;
+    private String cnic;
+    private String phone;
+ 
+    public Resident(String name, String cnic, String phone) {
+        this.name = name;
+        this.cnic = cnic;
+        this.phone = phone;
+    }
+ 
+    public String getName()  { 
+     return name;
+    }
+    public String getCnic()  {
+     return cnic; 
+    }
+    public String getPhone() {
+     return phone; 
+    }
+ 
+    public String display() {
+        return name + " (CNIC: " + cnic + ", Ph: " + phone + ")";
+    }
+}
