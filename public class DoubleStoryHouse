@@ -1,4 +1,4 @@
-class DoubleStoryHouse extends House {
+public class DoubleStoryHouse extends House {
     private double extraFloorFactor;
  
     public DoubleStoryHouse(int houseNo, double area, double extraFloorFactor) {
