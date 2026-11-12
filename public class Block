@@ -1,4 +1,4 @@
-class Block {
+public class Block {
     private String blockName;
     private ArrayList<House> houses;
  
